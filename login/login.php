@@ -54,8 +54,8 @@ if(isset($_COOKIE['ID_Eventime']))
  // if login is ok then we add a cookie
     $_POST['username'] = stripslashes($_POST['username']);
     $hour = time() + 3600;
-    setcookie('ID_Eventime', $_POST['username'], $hour);
-    setcookie('Key_Eventime', $_POST['pass'], $hour);
+    setcookie('ID_Eventime', $_POST['username'], $hour, '/');
+    setcookie('Key_Eventime', $_POST['pass'], $hour, '/');
 //then redirect them to the members area
     header("Location: login/members.php");
 }

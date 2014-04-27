@@ -18,8 +18,10 @@ if(isset($_COOKIE['ID_Eventime']))
  //otherwise they are shown the admin area
 else
 {
-   echo "Admin Area<p>";
-   echo "Your Content<p>";
+   echo "<h1>Admin Area</h1>";
+   echo "<h2>Your Content</h2>";
+   echo $info['member_name'];
+
    echo "<a href=logout.php>Logout</a>";
 }
 }

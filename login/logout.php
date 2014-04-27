@@ -1,11 +1,10 @@
 <?php
-
+var_dump('', $_COOKIE, '');
  $past = time() - 100;
 
- //this makes the time in the past to destroy the cookie
+ setcookie('ID_Eventime', gone, $past, '/');
+ setcookie('Key_Eventime', gone, $past, '/');
 
- setcookie('ID_Eventime', gone, $past);
- setcookie('Key_Eventime', gone, $past);
 
  header("Location: ../index.php");
 
