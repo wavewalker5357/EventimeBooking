@@ -1,0 +1,7 @@
+<?php
+function login()
+$query = "SELECT * FROM $members
+             WHERE username='$myusername' and password='$mypassword'";
+$result = $db->query($query);
+return $result;
+?>
