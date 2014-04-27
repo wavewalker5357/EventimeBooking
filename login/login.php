@@ -6,12 +6,12 @@ mysql_connect("localhost:3306", "root", "910107") or die(mysql_error());
 
 mysql_select_db("reservation_sys") or die(mysql_error());
  //Checks if there is a login cookie
-if(isset($_COOKIE['ID_my_site']))
+if(isset($_COOKIE['ID_Eventime']))
  //if there is, it logs you in and directes you to the members page
 {
-  $username = $_COOKIE['ID_my_site'];
+  $username = $_COOKIE['ID_Eventime'];
 
-  $pass = $_COOKIE['Key_my_site'];
+  $pass = $_COOKIE['Key_Eventime'];
   $check = mysql_query("SELECT * FROM users WHERE username = '$username'")or die(mysql_error());
   while($info = mysql_fetch_array( $check ))
   {
