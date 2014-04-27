@@ -10,8 +10,6 @@ require('model/product_db.php');
 require('model/category_db.php');
 require ('model/show_db.php');
 
-var_dump($_COOKIE);
-
 if (isset($_POST['action'])) {
     $action = $_POST['action'];
 } else if (isset($_GET['action'])) {
