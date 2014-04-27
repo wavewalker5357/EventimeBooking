@@ -1,4 +1,6 @@
 <?php
+
+var_dump($_COOKIE);
 //Connects to your Database
 mysql_connect("localhost:3306", "root", "910107") or die(mysql_error());
 
@@ -55,7 +57,7 @@ if(isset($_COOKIE['ID_my_site']))
     setcookie(ID_my_site, $_POST['username'], $hour);
     setcookie(Key_my_site, $_POST['pass'], $hour);
 //then redirect them to the members area
-    header("Location: login/members.php");
+    header("Location: ./login/members.php");
 }
 }
 }

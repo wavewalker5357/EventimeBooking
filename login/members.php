@@ -1,5 +1,5 @@
 <?php
-
+var_dump($_COOKIE);
 //Connects to your Database
 mysql_connect("localhost:3306", "root", "910107") or die(mysql_error());
 mysql_select_db("reservation_sys") or die(mysql_error());
