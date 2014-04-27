@@ -7,6 +7,6 @@
  setcookie('ID_Eventime', gone, $past);
  setcookie('Key_Eventime', gone, $past);
 
- header("Location: login.php");
+ header("Location: ../index.php");
 
  ?>

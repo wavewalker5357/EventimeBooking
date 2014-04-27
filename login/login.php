@@ -20,7 +20,7 @@ if(isset($_COOKIE['ID_Eventime']))
      }
      else
      {
-        header("Location: ");
+        header("Location: ../index.php");
     }
 }
 }
