@@ -20,7 +20,7 @@ if(isset($_COOKIE['ID_Eventime']))
      }
      else
      {
-        header("Location: ../index.php");
+        include_once ('login/members.php');
     }
 }
 }
@@ -57,7 +57,7 @@ if(isset($_COOKIE['ID_Eventime']))
     setcookie('ID_Eventime', $_POST['username'], $hour);
     setcookie('Key_Eventime', $_POST['pass'], $hour);
 //then redirect them to the members area
-    header("Location: ./login/members.php");
+    header("Location: login/members.php");
 }
 }
 }
