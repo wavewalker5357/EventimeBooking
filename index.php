@@ -9,6 +9,7 @@ require('model/database.php');
 require('model/product_db.php');
 require('model/category_db.php');
 require ('model/show_db.php');
+require ('model/reservation_db.php');
 
 if (isset($_POST['action'])) {
     $action = $_POST['action'];
@@ -19,6 +20,7 @@ if (isset($_POST['action'])) {
 }
 
 if ($action == 'list_products') {
+
     $category_id = "";
     if ( isset($_GET['category_id']) ) {
         $category_id = $_GET['category_id'];
@@ -38,6 +40,7 @@ if ($action == 'list_products') {
 
     include('product_list.php');
 } else if ($action == 'view_product') {
+
     $categories = get_categories();
 
     $product_id = $_GET['product_id'];
@@ -70,13 +73,45 @@ if ($action == 'list_products') {
     // Get image URL and alternate text
     $image_filename = './images/' . $product_id . '.jpg';
     $image_alt = 'Image: ' . $name . '.jpg';
-
+    include("login/index.php");
     include('product_view.php');
 } elseif ($action == 'member') {
 
- $user_name = $_SESSION['user_name'];
+ $category_id = "";
+    if ( isset($_GET['category_id']) ) {
+        $category_id = $_GET['category_id'];
+    } else {
+        $category_id = 1;
+    }
 
- include 'view/member.php';
+    $categories = get_categories();
+    $category_name = get_category_name($category_id);
+    $products = get_products_by_category($category_id);
+
+session_start();
+
+$user_name = $_SESSION['user_name'];
+$user_email = $_SESSION['user_email'] ;
+$user_first_name = $_SESSION['user_first_name'];
+$user_last_name = $_SESSION['user_last_name'];
+$user_home_address = $_SESSION['user_home_address'];
+$user_mobile_telephone = $_SESSION['user_mobile_telephone'];
+$user_telephone = $_SESSION['user_telephone'];
+$user_birth = $_SESSION['user_birth'];
+
+$reservation_name = get_reservation_name($user_name);
+
+// $reservation_ids = array();
+//          foreach($reservation_name as $reservation) :
+//               $reservation_ids[] = $reservation['event_title'];
+//              endforeach;
+
+// print_r($reservation_ids);
+
+// $reservations = get_reservations_by_id();
+// $reserved_reservation_id = $reservation_name['reservation_event_id'];
+
+ include '/view/member.php';
 }
 ?>
 <?php include '/view/footer.php'; ?>

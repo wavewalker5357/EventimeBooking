@@ -1,4 +1,7 @@
 <?php include '/view/header.php'; ?>
+<?php var_dump($_COOKIE);
+var_dump($_SESSION);
+?>
 <div id="main">
     <div id="sidebar">
         <h1>By type:</h1>
@@ -25,21 +28,21 @@
         </div>
 
         <div id="right_column">
-            <p><b>Description:</b><?php echo $description; ?></p>
-            <p><b>Event Price:</b> $<?php echo $list_price; ?></p>
+            <p><strong>Description:</strong><?php echo $description; ?></p>
+            <p><strong>Event Price:</strong> $<?php echo $list_price; ?></p>
 
-            <p><b>On coming shows:</b></p>
+            <p><strong>On coming shows:</strong></p>
             <?php foreach ($shows as $show) : ?>
             <table>
-            <tr><td><b>Date:</b> <br /><?php echo $show['event_show_date']; ?></td>
-            <td><b>Seats available:</b><br /> <?php echo $show['event_show_seats']; ?></td>
-            <td><b>Your Price: </b>$<?php echo $list_price; ?>
+            <tr><td><strong>Date:</strong> <br /><?php echo $show['event_show_date']; ?></td>
+            <td><strong>Seats available:</strong><br /> <?php echo $show['event_show_seats']; ?></td>
+            <td><strong>Your Price: </strong>$<?php echo $list_price; ?>
             <form action="<?php echo '/cart' ?>" method="post">
                 <input type="hidden" name="action" value="add" />
-                <input type="hidden" name="product_id"
-                       value="<?php echo $product_id; ?>" />
-                <b>Quantity:</b><br />
+                <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
+                <strong>Quantity:</strong><br />
                 <input id="quantity" type="text" name="quantity" value="1" size="2" /><br />
+
                 <input type="submit" value="Add to Cart" />
             </form>
             </td>
