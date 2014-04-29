@@ -26,12 +26,12 @@ function get_reservation_name($user_name) {
     $db->exec($query);
 }
 
-function add_reservation($cart_show_event_seats, $cart_reservation_made_time, $cart_show_event_id) {
+function add_reservation($cart_event_id, $cart_show_event_seats, $cart_reservation_made_time, $cart_show_event_id, $cart_reservation_price, $cart_event_show_member) {
     global $db;
     $query = "INSERT INTO reservations
-                 (reservation_reserved_seats, reservation_made_time, reservation_event_show_id)
+                 (reservation_event_id, reservation_reserved_seats, reservation_made_time, reservation_event_show_id, reservation_price, reservation_member_name)
               VALUES
-                 ('$cart_show_event_seats', '$cart_reservation_made_time', '$cart_show_event_id')";
+                 ('$cart_event_id', '$cart_show_event_seats', '$cart_reservation_made_time', '$cart_show_event_id', '$cart_reservation_price', '$cart_event_show_member')";
     $db->exec($query);
 }
 ?>
