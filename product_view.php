@@ -36,10 +36,11 @@ var_dump($_SESSION);
             <table>
             <tr><td><strong>Date:</strong> <br /><?php echo $show['event_show_date']; ?></td>
             <td><strong>Seats available:</strong><br /> <?php echo $show['event_show_seats']; ?></td>
+            <td><strong>ID:</strong><br /> <?php echo $show['event_show_id']; ?></td>
             <td><strong>Your Price: </strong>$<?php echo $list_price; ?>
-            <form action="<?php echo '/cart' ?>" method="post">
+            <form action="./cart/index.php" method="POST">
                 <input type="hidden" name="action" value="add" />
-                <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
+                <input type="hidden" name="event_show_id" value="<?php echo $show['event_show_id']; ?>" />
                 <strong>Quantity:</strong><br />
                 <input id="quantity" type="text" name="quantity" value="1" size="2" /><br />
 

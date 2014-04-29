@@ -10,12 +10,17 @@ include '/header.php';
 
             <?php foreach($reservation_name as $reservation) : ?>
             <li>
+            <strong>Reservation ID:</strong> <?php echo $reservation['reservation_id']; ?><br />
             <strong>Event:</strong> <?php echo $reservation['event_title']; ?><br />
             <strong>Date:</strong> <?php echo $reservation['event_show_date']; ?><br />
             <strong>Tickets:</strong> <?php echo $reservation['reservation_reserved_seats']; ?><br />
             <strong>Ticket price:</strong><?php echo "$". $reservation['event_price']; ?><br />
             <strong>Subtotal:</strong> <?php echo "$". ($reservation['event_price'] * $reservation['reservation_reserved_seats']); ?><br />
             <strong>Total:</strong> <?php echo "$" .(($reservation['event_price'] * $reservation['reservation_reserved_seats']) *1.2). "(20% tax included)"; ?><br />
+             <form action="./cart/index.php" method="POST">
+             <input type="hidden" name="action" value="delete" />
+             <input type="hidden" name="cart_delete_reservation_id" value="<?php echo $reservation['reservation_id']; ?>" />
+             <input type="submit" value="Delete" />
             </li>
             <?php endforeach; ?>
 

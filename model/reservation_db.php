@@ -17,14 +17,21 @@ function get_reservation_name($user_name) {
                 WHERE member_name =  '$user_name'";
     $reservations = $db->query($query);
     return $reservations;
+}
 
-    // function get_reservation_event($reservation_id) {
-    // global $db;
-    // $query ="SELECT m.member_name, m.member_email, m.member_password, m.member_first_name, m.member_last_name, m.member_home_address, m.member_mobile_telephone, m.member_telephone, m.member_birth, r.reservation_event_id
-    //             FROM members AS m
-    //                  LEFT JOIN reservations AS r ON r.reservation_member_name = m.member_name
-    //             WHERE member_name =  '$user_name'";
-    // $reservation_events = $db->query($query);
-    // return $reservation_events;
+ function delete_reservation($cart_delete_reservation_id) {
+    global $db;
+    $query = "DELETE FROM reservations
+              WHERE reservation_id = '$cart_delete_reservation_id'";
+    $db->exec($query);
+}
+
+function add_reservation($cart_show_event_seats, $cart_reservation_made_time, $cart_show_event_id) {
+    global $db;
+    $query = "INSERT INTO reservations
+                 (reservation_reserved_seats, reservation_made_time, reservation_event_show_id)
+              VALUES
+                 ('$cart_show_event_seats', '$cart_reservation_made_time', '$cart_show_event_id')";
+    $db->exec($query);
 }
 ?>
