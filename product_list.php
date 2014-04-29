@@ -15,7 +15,8 @@
     </div>
     <div id="content">
 
-<?php include ("login/login.php"); ?>
+<!--<?php // include ("login/login.php"); ?> -->
+
         <h1><?php echo $category_name; ?></h1>
         <ul class="nav">
             <?php foreach ($products as $product) : ?>

@@ -1,7 +1,15 @@
 /* the styles for the HTML elements */
 body {
     margin-top: 0;
-    background-color: rgb(128, 141, 159);
+background: rgb(254,252,234); /* Old browsers */
+background: -moz-linear-gradient(left,  rgba(254,252,234,1) 0%, rgba(254,252,234,1) 12%, rgba(237,223,137,1) 40%, rgba(237,222,125,1) 50%, rgba(237,223,137,1) 60%, rgba(254,252,234,1) 87%, rgba(254,252,234,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(254,252,234,1)), color-stop(12%,rgba(254,252,234,1)), color-stop(40%,rgba(237,223,137,1)), color-stop(50%,rgba(237,222,125,1)), color-stop(60%,rgba(237,223,137,1)), color-stop(87%,rgba(254,252,234,1)), color-stop(100%,rgba(254,252,234,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left,  rgba(254,252,234,1) 0%,rgba(254,252,234,1) 12%,rgba(237,223,137,1) 40%,rgba(237,222,125,1) 50%,rgba(237,223,137,1) 60%,rgba(254,252,234,1) 87%,rgba(254,252,234,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left,  rgba(254,252,234,1) 0%,rgba(254,252,234,1) 12%,rgba(237,223,137,1) 40%,rgba(237,222,125,1) 50%,rgba(237,223,137,1) 60%,rgba(254,252,234,1) 87%,rgba(254,252,234,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left,  rgba(254,252,234,1) 0%,rgba(254,252,234,1) 12%,rgba(237,223,137,1) 40%,rgba(237,222,125,1) 50%,rgba(237,223,137,1) 60%,rgba(254,252,234,1) 87%,rgba(254,252,234,1) 100%); /* IE10+ */
+background: linear-gradient(to right,  rgba(254,252,234,1) 0%,rgba(254,252,234,1) 12%,rgba(237,223,137,1) 40%,rgba(237,222,125,1) 50%,rgba(237,223,137,1) 60%,rgba(254,252,234,1) 87%,rgba(254,252,234,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefcea', endColorstr='#fefcea',GradientType=1 ); /* IE6-9 */
+
     font-family: Arial, Helvetica, sans-serif;
 }
 h1 {
@@ -38,9 +46,9 @@ ul.nav li {
 }
 
 a {
-    color: rgb(69, 85, 106);   
+    color: rgb(69, 85, 106);
     font-weight: bold;
-    
+
 }
 a:hover {
     color: blue;

@@ -31,6 +31,11 @@ if ($action == 'list_products') {
     $category_name = get_category_name($category_id);
     $products = get_products_by_category($category_id);
 
+
+
+    include("login/index.php");
+
+
     include('product_list.php');
 } else if ($action == 'view_product') {
     $categories = get_categories();
