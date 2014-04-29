@@ -72,7 +72,7 @@ class Login
                         WHERE member_name = '" . $user_name . "' OR member_email = '" . $user_name . "';";
                 $sql .= "SELECT reservation_event_id
                         FROM reservations
-                        WHERE reservation_member_name =  'Patrik'";
+                        WHERE reservation_member_name =  '" . $user_name . "';";
                 $result_of_login_check = $this->db_connection->query($sql);
 
 
