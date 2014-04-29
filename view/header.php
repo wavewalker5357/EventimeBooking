@@ -11,5 +11,5 @@
     <body>
     <div id="page">
         <div id="header">
-            <h1>Eventime Booking</h1>
+            <h1><a href="./index.php">Eventime Booking</a></h1>
         </div>

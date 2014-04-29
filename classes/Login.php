@@ -70,9 +70,7 @@ class Login
                 $sql = "SELECT member_name, member_email, member_password, member_first_name, member_last_name, member_home_address, member_mobile_telephone, member_telephone, member_birth
                         FROM members
                         WHERE member_name = '" . $user_name . "' OR member_email = '" . $user_name . "';";
-                $sql .= "SELECT reservation_event_id
-                        FROM reservations
-                        WHERE reservation_member_name =  '" . $user_name . "';";
+
                 $result_of_login_check = $this->db_connection->query($sql);
 
 

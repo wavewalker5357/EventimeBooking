@@ -72,6 +72,11 @@ if ($action == 'list_products') {
     $image_alt = 'Image: ' . $name . '.jpg';
 
     include('product_view.php');
+} elseif ($action == 'member') {
+
+ $user_name = $_SESSION['user_name'];
+
+ include 'view/member.php';
 }
 ?>
 <?php include '/view/footer.php'; ?>
