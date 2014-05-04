@@ -1,7 +1,6 @@
 <div id="main">
-    <h1 class="top">Menu</h1>
-    <p><a href="product_manager">Event Manager</a></p>
-    <p><a href="product_catalog">Event Catalog</a></p>
+    <p><?php
+    include("login/index.php"); ?></p>
 </div>
 
 <?php
@@ -35,7 +34,6 @@ if ($action == 'list_products') {
 
 
 
-    include("login/index.php");
 
 
     include('product_list.php');
@@ -73,7 +71,6 @@ if ($action == 'list_products') {
     // Get image URL and alternate text
     $image_filename = './images/' . $product_id . '.jpg';
     $image_alt = 'Image: ' . $name . '.jpg';
-    include("login/index.php");
     include('product_view.php');
 } elseif ($action == 'member') {
 
@@ -88,7 +85,7 @@ if ($action == 'list_products') {
     $category_name = get_category_name($category_id);
     $products = get_products_by_category($category_id);
 
-session_start();
+// session_start();
 
 $user_name = $_SESSION['user_name'];
 $user_email = $_SESSION['user_email'] ;
@@ -99,6 +96,8 @@ $user_mobile_telephone = $_SESSION['user_mobile_telephone'];
 $user_telephone = $_SESSION['user_telephone'];
 $user_birth = $_SESSION['user_birth'];
 
+// var_dump($_SESSION);
+// $reservation_exists = get_reservation_count($user_name);
 $reservation_name = get_reservation_name($user_name);
 
 // $reservation_ids = array();

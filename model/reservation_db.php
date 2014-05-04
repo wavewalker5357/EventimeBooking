@@ -19,19 +19,31 @@ function get_reservation_name($user_name) {
     return $reservations;
 }
 
- function delete_reservation($cart_delete_reservation_id) {
+// function get_reservation_count($user_name){
+//         global $db;
+//     $query = "SELECT * FROM reservations
+//              WHERE member_name =  '$user_name'";
+//     $result = $db->query($query);
+//     $num_rows = mysql_num_rows($query);
+//     return $num_rows;
+// }
+
+ function delete_reservation($cart_delete_reservation_id, $cart_delete_reservation_seats, $cart_delete_show_id) {
     global $db;
     $query = "DELETE FROM reservations
-              WHERE reservation_id = '$cart_delete_reservation_id'";
+              WHERE reservation_id = '$cart_delete_reservation_id';
+UPDATE `reservation_sys`.`event_show` SET  `event_show_seats` = '$cart_delete_reservation_seats' WHERE `event_show`.`event_show_id` ='$cart_delete_show_id'
+              ";
     $db->exec($query);
 }
 
-function add_reservation($cart_event_id, $cart_show_event_seats, $cart_reservation_made_time, $cart_show_event_id, $cart_reservation_price, $cart_event_show_member) {
+function add_reservation($cart_event_id, $cart_show_event_seats, $cart_reservation_made_time, $cart_show_event_id, $cart_reservation_price, $cart_event_show_member, $cart_show_seats_reserved) {
     global $db;
     $query = "INSERT INTO reservations
                  (reservation_event_id, reservation_reserved_seats, reservation_made_time, reservation_event_show_id, reservation_price, reservation_member_name)
               VALUES
-                 ('$cart_event_id', '$cart_show_event_seats', '$cart_reservation_made_time', '$cart_show_event_id', '$cart_reservation_price', '$cart_event_show_member')";
+                 ('$cart_event_id', '$cart_show_event_seats', '$cart_reservation_made_time', '$cart_show_event_id', '$cart_reservation_price', '$cart_event_show_member');
+                 UPDATE `reservation_sys`.`event_show` SET  `event_show_seats` = '$cart_show_seats_reserved' WHERE `event_show`.`event_show_id` ='$cart_show_event_id'";
     $db->exec($query);
 }
 ?>

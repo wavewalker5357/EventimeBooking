@@ -96,6 +96,7 @@ class Login
                         $_SESSION['user_telephone'] = $result_row->member_telephone;
                         $_SESSION['user_birth'] = $result_row->member_birth;
                         $_SESSION['user_login_status'] = 1;
+                        $_SESSION['reservations_done'] = 0;
 
                     } else {
                         $this->errors[] = "Wrong password. Try again.";

@@ -1,7 +1,7 @@
 <?php include '/view/header.php'; ?>
 <div id="main">
     <div id="sidebar">
-        <h1>Types</h1>
+        <h1>Events</h1>
         <ul class="nav">
             <!-- display links for all categories -->
             <?php foreach($categories as $category) : ?>

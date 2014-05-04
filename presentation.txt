@@ -1,0 +1,12 @@
+BlackJack
+________________________________________________
+Designe decisions
+    - about CSS, HTML design, buttons, menus, so on..
+
+PHP Part
+    - assignment required to do this, I have made this
+
+Ticket Booking
+__________________
+
++ database design

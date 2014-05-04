@@ -8,7 +8,10 @@ include '/header.php';
         <h1>Reservations</h1>
         <ul class="nav">
 
-            <?php foreach($reservation_name as $reservation) : ?>
+            <?php
+
+                    if ( !empty($reservation_name) ) {
+                        foreach($reservation_name as $reservation) : ?>
             <li>
             <strong>Reservation Number:</strong> EV201400<?php echo $reservation['reservation_id']; ?><br />
             <strong>Event:</strong> <?php echo $reservation['event_title']; ?><br />
@@ -20,10 +23,13 @@ include '/header.php';
              <form action="./cart/index.php" method="POST">
              <input type="hidden" name="action" value="delete" />
              <input type="hidden" name="cart_delete_reservation_id" value="<?php echo $reservation['reservation_id']; ?>" />
+             <input type="hidden" name="cart_delete_show_id" value="<?php echo $reservation['reservation_event_id']; ?>" />
+             <input type="hidden" name="cart_delete_reservation_seats" value="<?php echo $reservation['reservation_reserved_seats']; ?>" />
+             <input type="hidden" name="cart_delete_show_seats" value="<?php echo $reservation['event_show_seats']; ?>" />
              <input type="hidden" name="cart_delete_reservation_title" value="<?php echo $reservation['event_title']; ?>" />
              <input type="submit" value="Delete" />
             </li>
-            <?php endforeach; ?>
+            <?php endforeach; }?>
 
         </ul>
     </div>

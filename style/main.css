@@ -13,17 +13,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefcea', end
     font-family: Arial, Helvetica, sans-serif;
 }
 h1 {
-    font-size: 150%;
+    color: #755300;
+    font-size: 200%;
     margin: 0;
     padding: .5em 0 .25em;
+    text-decoration: none;
+    font-weight: bold;
 }
 h2 {
+    color: rgb(205, 163, 94);
     font-size: 120%;
     margin: 0;
     padding: .25em 0 .5em;
-}
-h1, h2 {
-    color: rgb(205, 163, 94);
 }
 
 ul {
@@ -46,12 +47,12 @@ ul.nav li {
 }
 
 a {
-    color: rgb(69, 85, 106);
+    color: #8f6200;
     font-weight: bold;
 
 }
 a:hover {
-    color: blue;
+    color: #000000;
 }
 
 table {
@@ -79,11 +80,16 @@ br {
     border: 1px solid rgb(119, 75, 77);
 }
 #header {
+    background-image:url('bg.jpg');
+    background-color:#cccccc;
     margin: 0;
     border-bottom: 2px solid rgb(119, 75, 77);
     padding: .5em 2em;
 }
 #header h1 {
+    font-size: 300%;
+    color: #ffffff;
+    text-decoration: none;
     margin: 0;
     padding: .5em 0;
     color: black;
@@ -93,14 +99,18 @@ br {
     padding: .5em 2em;
 }
 
+#main p {
+    padding-left: 50px;
+
+}
 #sidebar {
     float: left;
-    width: 150px;
+    width: 250px;
 }
 
 #content {
     float: left;
-    width: 500px;
+    width: 400px;
     padding-bottom: 1.5em;
 }
 #left_column {
@@ -128,9 +138,9 @@ br {
     text-align: right;
 }
 
-/********************************************************************
-* Additional styles for the Product Manager application
-********************************************************************/
+.login_form {
+    padding-left: 50px;
+}
 #add_product_form {
     margin: .5em 0 2em;
 }

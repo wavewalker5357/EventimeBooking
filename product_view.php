@@ -1,10 +1,8 @@
 <?php include '/view/header.php'; ?>
-<?php var_dump($_COOKIE);
-var_dump($_SESSION);
-?>
+
 <div id="main">
     <div id="sidebar">
-        <h1>By type:</h1>
+        <h1>Events</h1>
         <ul class="nav">
             <!-- display links for all categories -->
             <?php foreach($categories as $category) : ?>
@@ -44,8 +42,9 @@ var_dump($_SESSION);
                 <input type="hidden" name="event_show_id" value="<?php echo $show['event_show_id']; ?>" />
                 <input type="hidden" name="event_show_price" value="<?php echo $list_price; ?>" />
                 <input type="hidden" name="event_show_member" value="<?php echo $_SESSION['user_name']; ?>" />
+                <input type="hidden" name="event_show_seats" value="<?php echo $show['event_show_seats']; ?>" />
                 <strong>Quantity:</strong><br />
-                <input id="quantity" type="text" name="quantity" value="1" size="2" /><br />
+                <input id="quantity" type="text" name="quantity" value="1" size="2" pattern="[0-9]{1,6}"/><br />
 
                 <input type="submit" value="Add to Cart" />
             </form>
