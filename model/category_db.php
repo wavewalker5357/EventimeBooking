@@ -1,4 +1,5 @@
 <?php
+// get all categories
 function get_categories() {
     global $db;
     $query = 'SELECT * FROM types
@@ -6,7 +7,7 @@ function get_categories() {
     $result = $db->query($query);
     return $result;
 }
-
+// get categories on type id
 function get_category_name($category_id) {
     global $db;
     $query = "SELECT * FROM types

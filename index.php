@@ -1,6 +1,5 @@
 <div id="main">
-    <p><?php
-    include("login/index.php"); ?></p>
+    <p><?php include("login/index.php"); ?></p>
 </div>
 
 <?php
@@ -18,25 +17,22 @@ if (isset($_POST['action'])) {
     $action = 'list_products';
 }
 
+// view list of products by category id
 if ($action == 'list_products') {
 
     $category_id = "";
-    if ( isset($_GET['category_id']) ) {
+    if (isset($_GET['category_id'])) {
         $category_id = $_GET['category_id'];
     } else {
         $category_id = 1;
     }
 
-
     $categories = get_categories();
     $category_name = get_category_name($category_id);
     $products = get_products_by_category($category_id);
 
-
-
-
-
     include('product_list.php');
+//    view product view by selected product
 } else if ($action == 'view_product') {
 
     $categories = get_categories();
@@ -53,29 +49,17 @@ if ($action == 'list_products') {
     $shows = get_shows($product_id);
     $show = get_shows_by_event($product_id);
 
-     $show_date = $show['event_show_date'];
-     $seats = $show['event_show_seats'];
+    $show_date = $show['event_show_date'];
+    $seats = $show['event_show_seats'];
 
-
-    // // Set the discount percent (for all web orders)
-    // $discount_percent = 30;
-
-    // // Calculate discounts
-    // $discount_amount = round($list_price * ($discount_percent / 100.0), 2);
-    // $unit_price = $list_price - $discount_amount;
-
-    // // Format the calculations
-    // $discount_amount = number_format($discount_amount, 2);
-    // $unit_price = number_format($unit_price, 2);
-
-    // Get image URL and alternate text
     $image_filename = './images/' . $product_id . '.jpg';
     $image_alt = 'Image: ' . $name . '.jpg';
     include('product_view.php');
+//    view member are if user clicks on link
 } elseif ($action == 'member') {
 
- $category_id = "";
-    if ( isset($_GET['category_id']) ) {
+    $category_id = "";
+    if (isset($_GET['category_id'])) {
         $category_id = $_GET['category_id'];
     } else {
         $category_id = 1;
@@ -85,32 +69,19 @@ if ($action == 'list_products') {
     $category_name = get_category_name($category_id);
     $products = get_products_by_category($category_id);
 
-// session_start();
+    $user_name = $_SESSION['user_name'];
+    $user_email = $_SESSION['user_email'];
+    $user_first_name = $_SESSION['user_first_name'];
+    $user_last_name = $_SESSION['user_last_name'];
+    $user_home_address = $_SESSION['user_home_address'];
+    $user_mobile_telephone = $_SESSION['user_mobile_telephone'];
+    $user_telephone = $_SESSION['user_telephone'];
+    $user_birth = $_SESSION['user_birth'];
 
-$user_name = $_SESSION['user_name'];
-$user_email = $_SESSION['user_email'] ;
-$user_first_name = $_SESSION['user_first_name'];
-$user_last_name = $_SESSION['user_last_name'];
-$user_home_address = $_SESSION['user_home_address'];
-$user_mobile_telephone = $_SESSION['user_mobile_telephone'];
-$user_telephone = $_SESSION['user_telephone'];
-$user_birth = $_SESSION['user_birth'];
+//    get reservations by user name
+    $reservation_name = get_reservation_name($user_name);
 
-// var_dump($_SESSION);
-// $reservation_exists = get_reservation_count($user_name);
-$reservation_name = get_reservation_name($user_name);
-
-// $reservation_ids = array();
-//          foreach($reservation_name as $reservation) :
-//               $reservation_ids[] = $reservation['event_title'];
-//              endforeach;
-
-// print_r($reservation_ids);
-
-// $reservations = get_reservations_by_id();
-// $reserved_reservation_id = $reservation_name['reservation_event_id'];
-
- include '/view/member.php';
+    include '/view/member.php';
 }
 ?>
 <?php include '/view/footer.php'; ?>

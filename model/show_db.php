@@ -1,4 +1,5 @@
 <?php
+// get all shows
 function get_shows($product_id) {
     global $db;
     $query = "SELECT * FROM event_show
@@ -7,7 +8,7 @@ function get_shows($product_id) {
     $shows = $db->query($query);
     return $shows;
 }
-
+// get all shows based on event id of this show
 function get_shows_by_event($product_id) {
     global $db;
     $query = "SELECT * FROM event_show

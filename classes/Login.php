@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Class login
- * handles the user's login and logout process
- */
 class Login
 {
     /**
@@ -20,12 +16,11 @@ class Login
     public $messages = array();
 
     /**
-     * the function "__construct()" automatically starts whenever an object of this class is created,
-     * you know, when you do "$login = new Login();"
+     * the function "__construct()" automatically starts whenever an object of this class is created.
      */
     public function __construct()
     {
-        // create/read session, absolutely necessary
+        // create/read session
         session_start();
 
         // check the possible login actions:
@@ -102,7 +97,7 @@ class Login
                         $this->errors[] = "Wrong password. Try again.";
                     }
                 } else {
-                    $this->errors[] = "This user does not exist.";
+                    $this->errors[] = "This member does not exist.";
                 }
             } else {
                 $this->errors[] = "Database connection problem.";
@@ -115,11 +110,11 @@ class Login
      */
     public function doLogout()
     {
-        // delete the session of the user
+        // delete the session of the member
         $_SESSION = array();
         session_destroy();
         // return a little feeedback message
-        $this->messages[] = "You have been logged out.";
+        $this->messages[] = "<p id='login_form'>You have been logged out.</p>";
 
     }
 

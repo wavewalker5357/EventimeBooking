@@ -4,12 +4,14 @@
     <!-- the head section -->
     <head>
         <title>Eventime Booking: Book today, enjoy tomorrow!</title>
-        <link rel="stylesheet" type="text/css" href="style/main.css" />
+        <!-- Extended css from popular Boostrap theme -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+            <!-- Project custom basic css style -->
+            <link rel="stylesheet" type="text/css" href="style/main.css" />
     </head>
-
     <!-- the body section -->
     <body>
-    <div id="page">
-        <div id="header">
-            <h1><a href="./index.php">Eventime Booking</a></h1>
-        </div>
+        <div id="page">
+            <div id="header">
+                <button type="button" class="btn btn-header"><h1><span class="glyphicon glyphicon-star-empty"></span> <a href="./index.php">Eventime Booking</a></h1></button>
+            </div>

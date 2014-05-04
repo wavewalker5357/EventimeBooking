@@ -1,19 +1,17 @@
 <?php
 
-/**
- * Class registration
- * handles the user registration
- */
-class Registration
-{
+class Registration {
+
     /**
      * @var object $db_connection The database connection
      */
     private $db_connection = null;
+
     /**
      * @var array $errors Collection of error messages
      */
     public $errors = array();
+
     /**
      * @var array $messages Collection of success / neutral messages
      */
@@ -23,8 +21,7 @@ class Registration
      * the function "__construct()" automatically starts whenever an object of this class is created,
      * you know, when you do "$registration = new Registration();"
      */
-    public function __construct()
-    {
+    public function __construct() {
         if (isset($_POST["register"])) {
             $this->registerNewUser();
         }
@@ -34,8 +31,7 @@ class Registration
      * handles the entire registration process. checks all error possibilities
      * and creates a new user in the database if everything is fine
      */
-    private function registerNewUser()
-    {
+    private function registerNewUser() {
         if (empty($_POST['user_name'])) {
             $this->errors[] = "Empty Username";
         } elseif (empty($_POST['user_password_new']) || empty($_POST['user_password_repeat'])) {
@@ -55,11 +51,11 @@ class Registration
         } elseif (!filter_var($_POST['user_email'], FILTER_VALIDATE_EMAIL)) {
             $this->errors[] = "Your email address is not in a valid email format";
         } elseif (empty($_POST['user_first_name'])) {
-            $this->errors[] ="First name cannot be empty";
+            $this->errors[] = "First name cannot be empty";
         } elseif (strlen($_POST['user_first_name']) > 20) {
             $this->errors[] = "First name cannot be longer than 20 characters";
         } elseif (empty($_POST['user_last_name'])) {
-            $this->errors[] ="Last name cannot be empty";
+            $this->errors[] = "Last name cannot be empty";
         } elseif (strlen($_POST['user_last_name']) > 20) {
             $this->errors[] = "Last name cannot be longer than 20 characters";
         } elseif (strlen($_POST['user_home_address']) > 200) {
@@ -69,25 +65,8 @@ class Registration
         } elseif (strlen($_POST['user_telephone']) > 15) {
             $this->errors[] = "Birth date cannot be longer than 10 characters";
         } elseif (!preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', $_POST['user_birth'])) {
-           $this->errors[] = "Birth date does not fit the date scheme: yyyy-mm-dd (for ex.: 2001-01-01) or are not between 1900-01-01 and 2099-12-31";
-        } elseif (!empty($_POST['user_name'])
-            && strlen($_POST['user_name']) <= 64
-            && strlen($_POST['user_name']) >= 2
-            && preg_match('/^[a-z\d]{2,64}$/i', $_POST['user_name'])
-            && !empty($_POST['user_email'])
-            && strlen($_POST['user_email']) <= 64
-            && filter_var($_POST['user_email'], FILTER_VALIDATE_EMAIL)
-            && !empty($_POST['user_password_new'])
-            && !empty($_POST['user_password_repeat'])
-            && !empty($_POST['user_first_name'])
-            && strlen($_POST['user_first_name']) <= 20
-            && !empty($_POST['user_last_name'])
-            && strlen($_POST['user_last_name']) <=20
-            && strlen($_POST['user_home_address']) <= 200
-            && strlen($_POST['user_mobile_telephone']) < 15
-            && strlen($_POST['user_telephone']) < 15
-            && preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', $_POST['user_birth'])
-            && ($_POST['user_password_new'] === $_POST['user_password_repeat'])
+            $this->errors[] = "Birth date does not fit the date scheme: yyyy-mm-dd (for ex.: 2001-01-01) or are not between 1900-01-01 and 2099-12-31";
+        } elseif (!empty($_POST['user_name']) && strlen($_POST['user_name']) <= 64 && strlen($_POST['user_name']) >= 2 && preg_match('/^[a-z\d]{2,64}$/i', $_POST['user_name']) && !empty($_POST['user_email']) && strlen($_POST['user_email']) <= 64 && filter_var($_POST['user_email'], FILTER_VALIDATE_EMAIL) && !empty($_POST['user_password_new']) && !empty($_POST['user_password_repeat']) && !empty($_POST['user_first_name']) && strlen($_POST['user_first_name']) <= 20 && !empty($_POST['user_last_name']) && strlen($_POST['user_last_name']) <= 20 && strlen($_POST['user_home_address']) <= 200 && strlen($_POST['user_mobile_telephone']) < 15 && strlen($_POST['user_telephone']) < 15 && preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', $_POST['user_birth']) && ($_POST['user_password_new'] === $_POST['user_password_repeat'])
         ) {
             // create a database connection
             $this->db_connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -116,7 +95,6 @@ class Registration
                 // hash string. the PASSWORD_DEFAULT constant is defined by the PHP 5.5, or if you are using
                 // PHP 5.3/5.4, by the password hashing compatibility library
                 // $user_password_hash = password_hash($user_password, PASSWORD_DEFAULT);
-
                 // check if user or email address already exists
                 $sql = "SELECT * FROM members WHERE member_name = '" . $user_name . "' OR member_email = '" . $user_email . "';";
                 $query_check_user_name = $this->db_connection->query($sql);
@@ -126,7 +104,7 @@ class Registration
                 } else {
                     // write new user's data into database
                     $sql = "INSERT INTO members (member_name, member_password, member_email, member_first_name, member_last_name, member_home_address, member_mobile_telephone, member_telephone, member_birth)
-                            VALUES('" . $user_name . "', '" . $user_password. "', '" . $user_email . "', '" . $user_first_name . "', '" . $user_last_name . "', '" . $user_home_address . "', '" . $user_mobile_telephone . "', '" . $user_telephone . "', '" . $user_birth . "');";
+                            VALUES('" . $user_name . "', '" . $user_password . "', '" . $user_email . "', '" . $user_first_name . "', '" . $user_last_name . "', '" . $user_home_address . "', '" . $user_mobile_telephone . "', '" . $user_telephone . "', '" . $user_birth . "');";
                     $query_new_user_insert = $this->db_connection->query($sql);
 
                     // if user has been added successfully
@@ -143,4 +121,5 @@ class Registration
             $this->errors[] = "An unknown error occurred.";
         }
     }
+
 }

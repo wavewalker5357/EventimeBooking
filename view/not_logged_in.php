@@ -23,7 +23,7 @@ if (isset($login)) {
     <label for="login_input_password">Password</label>
     <input id="login_input_password" class="login_input" type="password" name="user_password" autocomplete="off" required />
 
-    <input type="submit"  name="login" value="Log in" />
+    <input type="submit"  name="login" value="Log in" class="btn btn-warning" />
 
 </form>
-<p><a href="register.php">Register new account</a></p>
+<p id="login_form"><a href="register.php">Register new account</a></p>

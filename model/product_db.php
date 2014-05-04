@@ -1,4 +1,5 @@
 <?php
+// get all reservations
 function get_products() {
     global $db;
     $query = 'SELECT * FROM events
@@ -6,7 +7,7 @@ function get_products() {
     $products = $db->query($query);
     return $products;
 }
-
+// get all reservations base on event id
 function get_products_by_category($category_id) {
     global $db;
     $query = "SELECT * FROM events
@@ -15,7 +16,7 @@ function get_products_by_category($category_id) {
     $products = $db->query($query);
     return $products;
 }
-
+// get all reservations base on event id
 function get_product($product_id) {
     global $db;
     $query = "SELECT * FROM events
@@ -25,19 +26,4 @@ function get_product($product_id) {
     return $product;
 }
 
-function delete_product($product_id) {
-    global $db;
-    $query = "DELETE FROM events
-              WHERE event_id = '$product_id'";
-    $db->exec($query);
-}
-
-function add_product($category_id, $code, $name, $price) {
-    global $db;
-    $query = "INSERT INTO events
-                 (type_id, event_description, event_title, event_price)
-              VALUES
-                 ('$category_id', '$code', '$name', '$price')";
-    $db->exec($query);
-}
 ?>
