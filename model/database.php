@@ -1,8 +1,8 @@
 <?php
 
 $dsn = 'mysql:host=localhost:3306;dbname=reservation_sys';
-$username = 'root';
-$password = '910107';
+$username = 'ticket_booking';
+$password = 'password';
 
 try {
     $db = new PDO($dsn, $username, $password);
